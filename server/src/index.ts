@@ -20,7 +20,8 @@ const schema = buildSchema(`
   type ListItem {
     id: Int!
     name: String!
-    category: Category!
+    category: Category! @deprecated
+    categoryName: String!
   }
   type Category {
     name: String!
