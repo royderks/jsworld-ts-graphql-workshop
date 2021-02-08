@@ -1,12 +1,6 @@
 import * as React from 'react';
 import { request, gql } from 'graphql-request';
-
-type ListItem = {
-  name: string;
-  category: {
-    name: string;
-  };
-};
+import { ListItem } from './generated/graphql';
 
 function App() {
   const [data, setData] = React.useState<ListItem[]>([]);
@@ -15,9 +9,7 @@ function App() {
     query {
       list {
         name
-        category {
-          name
-        }
+        categoryName
       }
     }
   `;
@@ -34,7 +26,14 @@ function App() {
         <p>TypeScript + GraphQL</p>
       </header>
       <div>
-        <ul>{data.length && data.map(({ name }) => <li>{name}</li>)}</ul>
+        <ul>
+          {data.length &&
+            data.map(({ name, categoryName }) => (
+              <li>
+                {name} - {categoryName}
+              </li>
+            ))}
+        </ul>
       </div>
     </div>
   );
