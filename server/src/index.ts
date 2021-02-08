@@ -21,13 +21,12 @@ const schema = buildSchema(`
     id: Int!
     name: String!
     category: Category!
-    categoryName: String!
   }
   type Category {
     name: String!
   }
   type Query {
-    list: [ListItem]
+    list: [ListItem!]
   }
 `);
 

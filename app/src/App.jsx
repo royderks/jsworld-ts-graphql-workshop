@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { request, gql } from 'graphql-request';
+
 function App() {
   const [data, setData] = React.useState([]);
 
@@ -18,7 +19,7 @@ function App() {
     request('http://localhost:8080/graphql', query).then((data) => {
       setData(data.list);
     });
-  }, []);
+  }, [query]);
 
   return (
     <div className='App'>
