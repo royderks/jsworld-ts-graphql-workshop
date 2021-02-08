@@ -1,15 +1,8 @@
 import * as React from 'react';
 import { request, gql } from 'graphql-request';
 
-type ListItem = {
-  name: string;
-  category: {
-    name: string;
-  };
-};
-
 function App() {
-  const [data, setData] = React.useState<ListItem[]>([]);
+  const [data, setData] = React.useState([]);
 
   const query = gql`
     query {
