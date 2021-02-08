@@ -3,9 +3,7 @@ import { request, gql } from 'graphql-request';
 
 type ListItem = {
   name: string;
-  category: {
-    name: string;
-  };
+  categoryName: string;
 };
 
 function App() {
@@ -15,9 +13,7 @@ function App() {
     query {
       list {
         name
-        category {
-          name
-        }
+        categoryName
       }
     }
   `;
@@ -34,7 +30,14 @@ function App() {
         <p>TypeScript + GraphQL</p>
       </header>
       <div>
-        <ul>{data.length && data.map(({ name }) => <li>{name}</li>)}</ul>
+        <ul>
+          {data.length &&
+            data.map(({ name, categoryName }) => (
+              <li>
+                {name} - {categoryName}
+              </li>
+            ))}
+        </ul>
       </div>
     </div>
   );
