@@ -1,20 +1,8 @@
 import * as React from 'react';
-import { useQuery, gql } from '@apollo/client';
-import { ListItem } from './generated/graphql';
-
-const query = gql`
-  query {
-    list {
-      name
-      categoryName
-    }
-  }
-`;
+import { useGetListQuery } from './generated/graphql';
 
 function App() {
-  const { loading, error, data } = useQuery<{
-    list: ListItem[];
-  }>(query);
+  const { loading, error, data } = useGetListQuery();
 
   const { list } = data || {};
 

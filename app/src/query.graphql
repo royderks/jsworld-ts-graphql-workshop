@@ -1,0 +1,6 @@
+query GetList {
+  list {
+    name
+    categoryName
+  }
+}
